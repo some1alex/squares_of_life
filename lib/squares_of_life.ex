@@ -118,7 +118,6 @@ defmodule SquaresOfLife do
 
 
   defp draw() do
-    clientSize = :gl.getClientSize
     :gl.viewport(0, 0, 600, 600)
     :gl.matrixMode(:gl_const.gl_projection)
     :gl.loadIdentity()
