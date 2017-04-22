@@ -1,0 +1,27 @@
+
+    glColor3f (1.0, 1.0, 1.0);
+    glBegin(GL_LINES);
+    
+    for i <- 1..8, do:
+      glVertex2f(0.0, i/10)
+      glVertex2f(1.0, i/10)
+      glVertex2f(i/10, 0.0)
+      glVertex2f(i/10, 1.0)
+    end
+
+
+
+:gl.translatef(-1.5, 0.0, -6.0)
+    :gl.'begin'(:gl_const.gl_triangles)
+    :gl.vertex3f(0.0, 1.0, 0.0)
+    :gl.vertex3f(-1.0, -1.0, 0.0)
+    :gl.vertex3f(1.0, -1.0, 0.0)
+
+
+
+
+
+    :gl.translatef(-1.5, 0.0, -6.0)
+    :gl.vertex3f(0.0, 1.0, 0.0)
+    :gl.vertex3f(-1.0, -1.0, 0.0)
+    :gl.vertex3f(1.0, -1.0, 0.0)
