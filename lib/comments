@@ -62,7 +62,7 @@ end
 actors = %{}
 
 Entity.placeAt(pid1, 0, 1)
-Entity.placeAt(pi2, 0, 4)
+Entity.placeAt(pid2, 0, 4)
 Entity.placeAt(pid3, 3, 4)
 Entity.placeAt(pid4, 5, 6)
 Entity.placeAt(pid5, 7, 1)
