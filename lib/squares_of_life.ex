@@ -6,13 +6,63 @@ defmodule KV.Supervisor do
   end
 
   def init(:ok) do
+
+
+    
     children = [
-      worker(KV.Registry, [KV.Registry])
+      worker(Entity, [], [name: Entity])
     ]
 
     supervise(children, strategy: :one_for_one)
   end
+
+
+  """
+  def createAgents do
+    {:ok, pid} = Agent.start_link(fn -> %{} end)
+    Agent.update(pid, &Map.put(&1, :hello, :world))
+    Agent.get(pid, &Map.get(&1, :hello))
+  end
+  """
 end
+
+
+defmodule Loop do
+   def for_test(toNumber, message) do
+      efor(toNumber, message)
+   end
+   defp efor(toNumber, message) do
+     if not(toNumber == 0) do
+       IO.puts(message)
+       efor(toNumber-1,message)
+     end
+   end
+end
+
+
+
+
+defmodule Entity do
+  def start_link do
+    Agent.start_link(fn -> %{} end)
+  end
+ 
+  def placeAt(pid, x, y) do
+    Agent.update(pid, &Map.put(&1, "position", [x, y]))
+  end
+ 
+  def getLocation(pid) do
+    Agent.get(pid, &Map.get(&1, "position"))
+  end
+
+  def printLocation(pid) do
+    value = Agent.get(pid, &Map.get(&1, "position"))
+  end
+end
+
+
+
+
 
 defmodule Randomize do
   def random(number) do
@@ -20,6 +70,10 @@ defmodule Randomize do
     :random.uniform(number)
   end
 end
+
+
+
+
 
 defmodule SquaresOfLife do
   @behaviour :wx_object
@@ -35,7 +89,6 @@ defmodule SquaresOfLife do
   def start() do
     :wx_object.start_link(__MODULE__, [], [])
   end
-
 
 
 

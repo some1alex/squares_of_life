@@ -25,3 +25,68 @@
     :gl.vertex3f(0.0, 1.0, 0.0)
     :gl.vertex3f(-1.0, -1.0, 0.0)
     :gl.vertex3f(1.0, -1.0, 0.0)
+
+
+
+
+    defmodule Entity do
+  import ExActor
+  use ExActor
+
+  defcast place([x, y]), state: [locX, locY] do
+    new_state([x, y])
+  end
+  
+  defcast move([withX, withY]), state: [locX, locY] do 
+    new_state([locX+withX, locY+withY])
+  end
+  
+  defcall get, state: [locX, locY] do
+    [locX, locY]
+  end
+end
+
+
+
+
+
+{:ok, pid1} = Entity.start_link
+{:ok, pid2} = Entity.start_link
+{:ok, pid3} = Entity.start_link
+{:ok, pid4} = Entity.start_link
+{:ok, pid5} = Entity.start_link
+{:ok, pid6} = Entity.start_link
+{:ok, pid7} = Entity.start_link
+{:ok, pid8} = Entity.start_link
+
+actors = %{}
+
+Entity.placeAt(pid1, 0, 1)
+Entity.placeAt(pi2, 0, 4)
+Entity.placeAt(pid3, 3, 4)
+Entity.placeAt(pid4, 5, 6)
+Entity.placeAt(pid5, 7, 1)
+Entity.placeAt(pid6, 4, 5)
+Entity.placeAt(pid7, 8, 2)
+Entity.placeAt(pid8, 9, 1)
+Entity.getLocation(pid)
+
+
+worker(Entity, [])
+
+
+
+{:ok, pid} = Entity.start_link
+Entity.placeAt(pid, 0, 1)
+Entity.getLocation(pid)
+
+
+
+
+actors = %{}
+Map.put( actors, Loop.for_test( 8, ({:ok, pid} = Entity.start_link) )
+
+
+for n <- 0..10, do: Map.put( actors, {:ok, pid} = Entity.start_link, pid)
+
+for n <- 0..10, do: Entity.printLocation(Map.fetch(pids, n))
