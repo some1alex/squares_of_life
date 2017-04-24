@@ -7,8 +7,6 @@ defmodule KV.Supervisor do
 
   def init(:ok) do
 
-
-    
     children = [
       worker(Entity, [], [name: Entity])
     ]
@@ -49,6 +47,19 @@ defmodule Entity do
  
   def placeAt(pid, x, y) do
     Agent.update(pid, &Map.put(&1, "position", [x, y]))
+  end
+
+  def moveWith(pid, onX, onY) do
+    case onX!=1 do
+        true -> 
+          raise "Can only move by 1 space!"
+        _ -> case onY!=1 do
+                true -> 
+                  raise "Can only move by 1 space!"
+                _ -> 
+                  Agent.update(pid, &Map.put(&1, "position", [onX, onY]))
+             end
+      end
   end
  
   def getLocation(pid) do

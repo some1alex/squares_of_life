@@ -50,26 +50,13 @@ end
 
 
 
-{:ok, pid1} = Entity.start_link
-{:ok, pid2} = Entity.start_link
-{:ok, pid3} = Entity.start_link
-{:ok, pid4} = Entity.start_link
-{:ok, pid5} = Entity.start_link
-{:ok, pid6} = Entity.start_link
-{:ok, pid7} = Entity.start_link
-{:ok, pid8} = Entity.start_link
+{:ok, pid1} = Entity.start_link; {:ok, pid2} = Entity.start_link; {:ok, pid3} = Entity.start_link; {:ok, pid4} = Entity.start_link; {:ok, pid5} = Entity.start_link; {:ok, pid6} = Entity.start_link; {:ok, pid7} = Entity.start_link; {:ok, pid8} = Entity.start_link;
 
 actors = %{}
 
-Entity.placeAt(pid1, 0, 1)
-Entity.placeAt(pid2, 0, 4)
-Entity.placeAt(pid3, 3, 4)
-Entity.placeAt(pid4, 5, 6)
-Entity.placeAt(pid5, 7, 1)
-Entity.placeAt(pid6, 4, 5)
-Entity.placeAt(pid7, 8, 2)
-Entity.placeAt(pid8, 9, 1)
-Entity.getLocation(pid)
+Entity.placeAt(pid1, 0, 1); Entity.placeAt(pid2, 0, 4); Entity.placeAt(pid3, 3, 4); Entity.placeAt(pid4, 5, 6); Entity.placeAt(pid5, 7, 1); Entity.placeAt(pid6, 4, 5); Entity.placeAt(pid7, 8, 2); Entity.placeAt(pid8, 9, 1);
+
+Entity.getLocation(pid1)
 
 
 worker(Entity, [])
